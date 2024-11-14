@@ -1,11 +1,10 @@
 #!/bin/bash
 
-html="/home/joa/UTN-FRA_SO_Examenes/202406/docker/static-html-directory/index.html"
+html="/home/joa/UTN-FRA_SO_Examenes/202406/docker/index.html"
 dockerfile="/home/joa/UTN-FRA_SO_Examenes/202406/docker/dockerfile"
 run="/home/joa/UTN-FRA_SO_Examenes/202406/docker/run.sh"
 
 cd /home/joa/UTN-FRA_SO_Examenes/202406/docker/
-mkdir static-html-directory
 cat << EOF > "$html"
 <div>
   <h1> Sistemas Operativos - UTNFRA </h1></br>
@@ -17,7 +16,7 @@ EOF
 
 cat <<EOF > "$dockerfile"
 FROM nginx:latest
-COPY static-html-directory /usr/share/nginx/html
+COPY index.html /usr/share/nginx/html/index.html
 EOF
 
 docker build -t joacoox/web1-dominguez:latest . 
