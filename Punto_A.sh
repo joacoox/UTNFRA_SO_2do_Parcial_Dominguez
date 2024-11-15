@@ -1,4 +1,7 @@
-sudo fdisk /dev/sdc
+#!/bin/bash
+sudo mkdir /work
+
+sudo fdisk /dev/sdc << EOF
 n
 p
 
@@ -7,11 +10,12 @@ p
 t
 8e
 wq
+EOF
 
 sudo pvcreate /dev/sdc1
 sudo vgcreate vg_datos /dev/sdc1
 
-sudo fdisk /dev/sdc
+sudo fdisk /dev/sdc << EOF
 n
 p
 
@@ -21,11 +25,12 @@ t
 
 8e
 wq
+EOF
 
 sudo pvcreate /dev/sdc2
 sudo vgextend vg_datos /dev/sdc2
 
-sudo fdisk /dev/sde
+sudo fdisk /dev/sde << EOF
 n
 p
 
@@ -34,6 +39,7 @@ p
 t
 8e
 wq
+EOF
 
 sudo pvcreate /dev/sde1
 sudo vgcreate vg_temp /dev/sde1
